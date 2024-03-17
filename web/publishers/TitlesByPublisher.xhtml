@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+        <ui:composition template="/myTemplate.xhtml">
+            <ui:define name="title">
+                Titles by Publisher
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form styleClass="jsfcrud_list_form">
+                    <h:outputText escape="false" value="Publisher no.#{titlesByPublisher.getPublisherid()} has no titles"  rendered="#{!titlesByPublisher.rowSetNotEmpty()}"/>
+                    <h:panelGroup rendered="#{titlesByPublisher.rowSetNotEmpty()}">
+                        <h:dataTable value="#{titlesByPublisher.titlesbyPublisher}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="ISBN"/>
+                                </f:facet>
+                                <h:outputText value="#{item.isbn}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="TITLE"/>
+                                </f:facet>
+                                <h:outputText value="#{item.title}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="EDITION"/>
+                                </f:facet>
+                                <h:outputText value="#{item.editionnumber}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="COPYRIGHT"/>
+                                </f:facet>
+                                <h:outputText value="#{item.copyright}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="PUBLISHER"/>
+                                </f:facet>
+                                <h:outputText value="#{item.publishername}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGroup>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

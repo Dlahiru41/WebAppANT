@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="./myTemplate.xhtml">
+
+        <ui:define name="title">
+            <p>Welcome to my Favourite Books Catalogue</p>
+        </ui:define>
+
+        <ui:define name="content">
+            <p>This is a simple web application with a back end database.</p>
+            <p>The application was built using Netbeans with JavaDB and Glassfish.</p>
+
+            <br/>
+            <b><i>The implementation of this application demonstrates the following:-</i></b>
+            <ol>
+                <li>Setting a connection in oder to connect to a database on Glassfish server</li>
+                <li>Generating Entity Classes from database tables</li>
+                <li>Generating JSF pages from Entity classes which allow database CRUD operations</li>
+                <li>An implementation of database Master-Details views</li>
+                <li>Java code to connect to a database and execute a SQL query </li>
+                <li>A AJAX search box to search e.g. a database table or a ResultSet from the execution of a SQL query</li>
+                <li>Simple Session tracking </li>
+                <li>Simple User input validation with AJAX</li>
+                <li>Using Facelets Template and Facelets Template Client in order to create a consistent look and feel of a website</li>
+            </ol>
+
+            <f:view>
+                <h:form>
+                    <h:outputText value="Please enter your name: "/>
+                    <h:inputText id="nameInputText" required="true"
+                                 requiredMessage=" Please enter your name"
+                                 value="#{user.username}"
+                                 validatorMessage=" Name must be fewer than 30 characters" >
+                        <f:validateLength maximum="30" />
+                        <f:ajax event="blur" execute="@this" render="nameError"/>
+                    </h:inputText>
+                    <h:message id="nameError" for="nameInputText" styleClass="error"/>
+                </h:form>
+            </f:view>
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+

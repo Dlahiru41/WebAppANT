@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Favourite Books</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            <ui:insert name="top">
+                <table style="width:100%">
+                    <tbody>
+                        <tr>
+                            <td align="center"><h2>Favourite Books Catalogue</h2></td>
+                            <td align="right"> <h3><i>Hello <h:outputText value="#{user.username}" /></i></h3></td>
+
+                            <td align="right"> <h:graphicImage name="images/london-met-230x105.png" height="70" width ="153"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </ui:insert>
+        </div>
+        <div>
+            <div id="left">
+                <ui:insert name="left">
+                    <table border="0"  >
+                        <thead>
+                            <tr>
+                                <th>Menu Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> <h:link outcome="/index" value=" Home"/>
+                                    <br /></td>
+                            </tr>
+                            <tr>
+                                <td> <h:link outcome="/authors/List" value=" Authors"/>
+                                    <br /></td>
+                            </tr>
+                            <tr>
+                                <td><h:link outcome="/publishers/List" value=" Publishers"/>
+                                    <br /></td>
+                            </tr>
+                            <tr>
+                                <td><h:link outcome="/titles/List" value=" Titles"/></td>
+                            </tr>
+                            <tr>
+                                <td><h:link outcome="/ajaxSearchBox" value=" Search Titles"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </ui:insert>
+            </div>
+            <div id="content" class="left_content">
+                <h2>
+                    <ui:insert name="title">Page title goes here...</ui:insert> </h2>
+                <ui:insert name="content">Page content goes here...</ui:insert>
+            </div>
+        </div>
+        <div id="bottom">
+            <ui:insert name="bottom">
+                <p align="center">London Metropolitan University, 166-220 Holloway Road, N7 8DB</p>
+                <p align="center">Email: abc@londonmet.ac.uk</p>
+            </ui:insert>
+        </div>
+
+    </h:body>
+
+</html>

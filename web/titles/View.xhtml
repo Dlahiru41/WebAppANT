@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/myTemplate.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTitlesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTitlesLabel_isbn}"/>
+                    <h:outputText value="#{titlesController.selected.isbn}" title="#{bundle.ViewTitlesTitle_isbn}"/>
+                    <h:outputText value="#{bundle.ViewTitlesLabel_title}"/>
+                    <h:outputText value="#{titlesController.selected.title}" title="#{bundle.ViewTitlesTitle_title}"/>
+                    <h:outputText value="#{bundle.ViewTitlesLabel_editionnumber}"/>
+                    <h:outputText value="#{titlesController.selected.editionnumber}" title="#{bundle.ViewTitlesTitle_editionnumber}"/>
+                    <h:outputText value="#{bundle.ViewTitlesLabel_copyright}"/>
+                    <h:outputText value="#{titlesController.selected.copyright}" title="#{bundle.ViewTitlesTitle_copyright}"/>
+                    <h:outputText value="#{bundle.ViewTitlesLabel_publisherid}"/>
+                    <h:outputText value="#{titlesController.selected.publisherid}" title="#{bundle.ViewTitlesTitle_publisherid}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{titlesController.destroyAndView}" value="#{bundle.ViewTitlesDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTitlesEditLink}"/>
+                <br />
+                <h:commandLink action="#{titlesController.prepareCreate}" value="#{bundle.ViewTitlesCreateLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

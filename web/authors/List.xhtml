@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/myTemplate.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListAuthorsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListAuthorsEmpty}" rendered="#{authorsController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{authorsController.items.rowCount > 0}">
+                    <h:outputText value="#{authorsController.pagination.pageFirstItem + 1}..#{authorsController.pagination.pageLastItem + 1}/#{authorsController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{authorsController.previous}" value="#{bundle.Previous} #{authorsController.pagination.pageSize}" rendered="#{authorsController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{authorsController.next}" value="#{bundle.Next} #{authorsController.pagination.pageSize}" rendered="#{authorsController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{authorsController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuthorsTitle_authorid}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.authorid}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuthorsTitle_firstname}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.firstname}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuthorsTitle_lastname}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lastname}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{authorsController.prepareView}" value="#{bundle.ListAuthorsViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{authorsController.prepareEdit}" value="#{bundle.ListAuthorsEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{authorsController.destroy}" value="#{bundle.ListAuthorsDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{authorsController.prepareCreate}" value="#{bundle.ListAuthorsCreateLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

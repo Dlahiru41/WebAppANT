@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/myTemplate.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateAuthorsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateAuthorsLabel_authorid}" for="authorid" />
+                    <h:inputText id="authorid" value="#{authorsController.selected.authorid}" title="#{bundle.CreateAuthorsTitle_authorid}" required="true" requiredMessage="#{bundle.CreateAuthorsRequiredMessage_authorid}"/>
+                    <h:outputLabel value="#{bundle.CreateAuthorsLabel_firstname}" for="firstname" />
+                    <h:inputText id="firstname" value="#{authorsController.selected.firstname}" title="#{bundle.CreateAuthorsTitle_firstname}" required="true" requiredMessage="#{bundle.CreateAuthorsRequiredMessage_firstname}"/>
+                    <h:outputLabel value="#{bundle.CreateAuthorsLabel_lastname}" for="lastname" />
+                    <h:inputText id="lastname" value="#{authorsController.selected.lastname}" title="#{bundle.CreateAuthorsTitle_lastname}" required="true" requiredMessage="#{bundle.CreateAuthorsRequiredMessage_lastname}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{authorsController.create}" value="#{bundle.CreateAuthorsSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{authorsController.prepareList}" value="#{bundle.CreateAuthorsShowAllLink}" immediate="true"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
